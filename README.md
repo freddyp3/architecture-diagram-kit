@@ -46,7 +46,6 @@ Each file has one job. A diagram is `spec + theme + styles + icons + engine`, jo
 | `docs/design.md` | The look: principles, layout rules, checklist | |
 | `docs/icons.md` | How to draw and add an icon | |
 | `examples/web-app/` | Generic example spec and the reference PNGs | |
-| `examples/shorts-copilot/` | A real project's diagram, with three-row detail pages | |
 | `examples/icons.png` | Every icon with its name | |
 | `SKILL.md` | Workflow for AI agents | |
 

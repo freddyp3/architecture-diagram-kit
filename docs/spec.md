@@ -36,7 +36,7 @@ A card's borders are at `x ± 155` and `y ± 37`.
 ## `groups`: tinted containers
 
 ```js
-groups:{ rp:{label:'retention prediction', x:797, y:534, w:350, h:130, tiles:['cards','tree']} }
+groups:{ jobs:{label:'background jobs', x:675, y:510, w:350, h:130, tiles:['queue','gear']} }
 ```
 
 `x`, `y` is the **top-left** corner. Two uses:
@@ -62,18 +62,18 @@ An ordered list. Each press of the right arrow advances to the next `at`.
 
 | Step | Effect |
 |---|---|
-| `{at:['api']}` | highlight these nodes/groups. For a container group, list it with its cards: `{at:['fe','gem','code']}` |
+| `{at:['api']}` | highlight these nodes/groups. For a container group, list it with its cards: `{at:['store','db','cache']}` |
 | `{along:['ask'], dur:.9}` | trace these edges with the accent line over `dur` seconds; several edges animate together |
-| `{open:'rp'}` | enter the detail page of group `rp`; when it ends, the overview continues |
+| `{open:'jobs'}` | enter the detail page of group `jobs`; when it ends, the overview continues |
 
 Alternate `at` and `along`. Anything the flow has not reached yet is shown greyed out.
 
 ## `details`: drill-down pages
 
 ```js
-details:{ rp:{ title:'retention prediction', input:{label:'Draft features', icon:'list'}, rows:[
-  {steps:[{label:'Random forest', icon:'tree'}, {label:'Average 200 trees', icon:'merge'}],
-   result:'opening retention · ending retention', glyph:'bars'},
+details:{ jobs:{ title:'background jobs', input:{label:'Job request', icon:'list'}, rows:[
+  {steps:[{label:'Queue', icon:'queue'}, {label:'Worker', icon:'gear'}],
+   result:'receipts · reports · exports', glyph:'doc'},
 ]}}
 ```
 

@@ -17,8 +17,8 @@ engineering whiteboard and not a UML tool.
    result". Never decoration. Never a second accent.
 3. **Colour lives in the icons.** Canvas, cards and lines are neutral; each icon is a small flat shape
    in one saturated colour. That contrast keeps it lively without being busy.
-4. **Plain words.** Labels are 1-3 words. Title case for things ("MCP server"), lowercase for group
-   captions and results ("retention prediction"). No labels on lines, no legends, no paragraphs. If a
+4. **Plain words.** Labels are 1-3 words. Title case for things ("Web app"), lowercase for group
+   captions and results ("background jobs"). No labels on lines, no legends, no paragraphs. If a
    line needs a label to make sense, restructure.
 5. **Soft, not flat.** Rounded corners, hairline borders, a faint shadow. The active card lifts
    slightly and glows in the accent colour.
