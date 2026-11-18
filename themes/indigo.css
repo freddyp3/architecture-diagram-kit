@@ -1,0 +1,9 @@
+/* Example alternative theme: overrides the accent family only. */
+:root{
+  --accent:#4f46e5;
+  --accent-soft:#a5b4fc;
+  --accent-bg:#eef2ff;
+  --accent-text:#4338ca;
+  --accent-ink:#3730a3;
+  --tile-border:#e0e7ff;
+}

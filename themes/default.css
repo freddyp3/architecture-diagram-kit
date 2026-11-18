@@ -1,0 +1,25 @@
+/* Design tokens. The only place colours and fonts are defined.
+   To make a new theme, copy indigo.css: a theme lists only the tokens it changes. */
+:root{
+  /* Neutrals */
+  --bg:#f7f8fb;            /* canvas */
+  --card:#ffffff;          /* cards, icon tiles, ring around the travelling dot */
+  --border:#e4e7ee;        /* card hairline */
+  --line:#dde1ea;          /* connector before the flow reaches it */
+  --ink:#1a2238;           /* text */
+  --muted:#a3abbd;         /* text of items the flow has not reached yet */
+  --dim-fill:#fbfbfd;      /* fill of items the flow has not reached yet */
+  --dim-mark:#d5d9e3;      /* result-pill circle before the flow reaches it */
+  --shadow:#1a2238;        /* card shadow colour (drawn at 8% opacity) */
+
+  /* Accent: means "the flow is here now" or "this is a result". Nothing else. */
+  --accent:#f97316;        /* active border, traced line, travelling dot, result border, glow */
+  --accent-soft:#fdba74;   /* group border */
+  --accent-bg:#fff7ed;     /* group and result-pill fill */
+  --accent-text:#c2410c;   /* group caption */
+  --accent-ink:#9a3412;    /* result-pill text */
+  --tile-border:#fde3c8;   /* icon tile border */
+
+  /* Type */
+  --font:-apple-system,'SF Pro Display','Helvetica Neue',Inter,system-ui,sans-serif;
+}

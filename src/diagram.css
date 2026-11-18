@@ -1,0 +1,58 @@
+/* Component styles. Uses theme tokens only: no colour or font is named here.
+   Sizes and positions of shapes live in engine.js (GEOMETRY), because SVG needs them as attributes. */
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;overflow:hidden;background:var(--bg)}
+body{font-family:var(--font)}
+svg.layer{position:fixed;inset:0;width:100vw;height:100vh;display:block}
+#sh feDropShadow{flood-color:var(--shadow)}
+#shOn feDropShadow{flood-color:var(--accent)}
+
+/* Card */
+.card{fill:var(--card);stroke:var(--border);stroke-width:1.2;filter:url(#sh);transition:stroke .3s,fill .3s}
+.node{transition:transform .3s}
+.node text{fill:var(--ink);font-size:18px;font-weight:600;letter-spacing:-.01em;pointer-events:none;transition:fill .3s}
+.node .ic{pointer-events:none}
+.node.on{transform:translateY(-3px)}
+.node.on .card{stroke:var(--accent);stroke-width:2.2;filter:url(#shOn)}
+.node.dim .card{fill:var(--dim-fill)}
+.node.dim text{fill:var(--muted)}
+.node.dim .ic{opacity:.35}
+
+/* Connector */
+.line{fill:none;stroke:var(--line);stroke-width:2;stroke-linejoin:round}
+.prog{fill:none;stroke:var(--accent);stroke-width:2.5;stroke-linejoin:round;stroke-linecap:round}
+.dot{fill:var(--accent);stroke:var(--card);stroke-width:3}
+
+/* Group */
+.group>rect:first-child{fill:var(--accent-bg);stroke:var(--accent-soft);stroke-width:1.5;transition:fill .3s,stroke .3s}
+.group text{fill:var(--accent-text);font-size:16px;font-weight:600;transition:fill .3s}
+.group .gi{transition:opacity .3s}
+.group.click{cursor:pointer}
+.group.on>rect:first-child{stroke:var(--accent);stroke-width:2.2}
+.group.dim>rect:first-child{fill:var(--dim-fill);stroke:var(--border)}
+.group.dim text{fill:var(--muted)}
+.group.dim .gi{opacity:.35}
+.tile{fill:var(--card);stroke:var(--tile-border);stroke-width:1.5}
+
+/* Result pill */
+.res{transition:transform .3s}
+.res rect,.res text,.res circle{transition:fill .3s,stroke .3s}
+.res rect{fill:var(--accent-bg);stroke:var(--accent);stroke-width:1.8}
+.res text{fill:var(--accent-ink);font-size:16px;font-weight:650}
+.res circle{fill:var(--accent)}
+.res.on{transform:translateY(-3px)}
+.res.on rect{stroke-width:2.8;filter:url(#shOn)}
+.res.dim rect{fill:var(--dim-fill);stroke:var(--border)}
+.res.dim text{fill:var(--muted)}
+.res.dim circle{fill:var(--dim-mark)}
+
+/* Pages */
+.layer{will-change:transform,opacity;transition:opacity .32s ease,transform .42s cubic-bezier(.2,.8,.2,1);transform-origin:50% 50%}
+.init *{transition:none!important}
+.hide{opacity:0;pointer-events:none}
+#topS.hide{transform:scale(1.1)}
+#detS.hide{transform:scale(.92)}
+.crumb{fill:var(--accent);font-size:17px;font-weight:600;cursor:pointer}
+.title{fill:var(--ink);font-size:36px;font-weight:700;letter-spacing:-.02em}
+.caption{fill:var(--ink);font-size:14px;font-weight:600;text-anchor:middle}
+.error{position:fixed;inset:0;margin:0;padding:48px;color:var(--ink);font:15px/1.5 ui-monospace,Menlo,monospace;white-space:pre-wrap}
