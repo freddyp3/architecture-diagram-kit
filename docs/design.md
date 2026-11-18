@@ -51,7 +51,7 @@ grey connectors. `themes/indigo.css` shows the six tokens to override.
 
 Sizes are yours to judge. The numbers in the example and the starter (1720 x 900 canvas, 310 x 74
 cards, 45 gaps) suit a diagram of that shape; they are defaults, not rules. Size each diagram so it
-looks good for its own content, using `canvas`, `card` and the per-card `w`, `h`, `scale` in the spec.
+looks good for its own content, using `canvas` and `card` in the spec.
 
 - **Fit the canvas to the drawing.** Lay the drawing out first, then set `canvas` so the drawing
   fills most of it with comfortable margins. A three-card diagram on the default canvas looks lost; a
@@ -60,21 +60,25 @@ looks good for its own content, using `canvas`, `card` and the per-card `w`, `h`
 - **Keep it readable where it will be shown.** A README shows the PNG about 800 px wide, so the wider
   the canvas, the smaller the labels end up. Past roughly 2200 wide, cut cards or move detail onto a
   detail page before growing the canvas further.
-- **Size cards to their labels.** Pick one width that holds the longest label with padding to spare
-  and use it for every ordinary card (`card:{w:...}`). Uniform cards look calmer than a width per label.
-- **Vary size only to say something.** A hub or the one component the diagram is about can be larger
-  (`w`, `h`, `scale`); a minor endpoint can be smaller. Two or three sizes at most.
+- **One size per kind of component.** Whatever size you choose, every card in the diagram is that
+  size: same width, height and scale, set once in `card`. Likewise every collapsed group is one size,
+  and gaps are equal. The size changes from diagram to diagram, never within one.
+- **Size cards to the longest label.** Pick the width that holds it with padding to spare, and give
+  every card that width.
+- **Different sizes only on request.** Give a card its own `w`, `h` or `scale` (a larger hub, say)
+  only when the user asks for it.
 - **Space by proportion.** Gaps between cards are clearly smaller than the cards, and consistent.
   Margins are clearly larger than the gaps. Rows sit far enough apart that lines between them have
   visible length.
-- **Size groups to their contents**, with the same padding on every side of the cards or tiles.
+- **Size container groups to their contents**, with the same padding around the cards in each one.
 
 ## Checklist before delivering
 
 - [ ] The steps tell the story start to finish and end back at the start, or at the output.
 - [ ] Finished-flow PNG (`step=end`): nothing overlaps, no line crosses a card, margins are even.
 - [ ] Sizing suits this diagram: the drawing fills the canvas without crowding it, labels are readable
-      at the size it will be shown, every label has padding, and any size difference is deliberate.
+      at the size it will be shown, and every label has padding.
+- [ ] All cards are the same size, and so are all collapsed groups, unless the user asked otherwise.
 - [ ] Mid-flow PNG: visited items in colour, unvisited greyed out, only the current item in the accent.
 - [ ] Every detail-page row ends in a result pill and no label is clipped.
 - [ ] The accent appears only on flow and results. No second accent, arrowheads or legends.

@@ -24,7 +24,7 @@ canvas:[1300,700], card:{w:260}
 | Field | Meaning |
 |---|---|
 | `canvas` | `[width, height]` of the overview, default `[1720,900]`. Write it as two whole numbers. The page scales it to fit the window, so a smaller canvas makes everything look larger, and the PNG export is twice this size |
-| `card` | defaults for every card in `nodes`: any of `w`, `h`, `scale` |
+| `card` | the size of every card in `nodes`: any of `w`, `h`, `scale`. Set sizes here, so all cards match |
 
 Detail pages are laid out automatically on their own 1720 x 900 canvas, whatever `canvas` is.
 
@@ -44,8 +44,11 @@ nodes:{ api:{label:'API', icon:'server', x:860, y:330} }
 | `label` | text on the card, 1-3 words |
 | `icon` | icon name (see `examples/icons.png`); omit for a centred text-only card |
 | `x`, `y` | **centre** of the card |
-| `w`, `h` | width and height, default 310 x 74 (or the spec's `card`) |
-| `scale` | size of the icon and label inside the card, default 1. Raise it with `w` and `h` for a card that should stand out |
+| `w`, `h` | width and height of this card only, overriding `card` (default 310 x 74) |
+| `scale` | size of the icon and label inside this card only, overriding `card` (default 1) |
+
+Leave `w`, `h` and `scale` off individual cards so they all share the size in `card`. Set them on one
+card only when the user asks for cards of different sizes.
 
 A card's borders are at `x ± w/2` and `y ± h/2`. A label needs a width of about
 `(94 + 10 per character) x scale` with an icon, so the default card holds about 22 characters.

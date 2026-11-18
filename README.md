@@ -56,7 +56,8 @@ Each file has one job. A diagram is `spec + theme + styles + icons + engine`, jo
 | Use different colours for one diagram | Add `themes/<name>.css` overriding tokens, build with `--theme <name>` (or `--theme path/to.css`) |
 | Change the default colours or font everywhere | `themes/default.css` |
 | Change how a component looks (border weight, text size, shadow, hover lift) | `src/diagram.css` |
-| Size one diagram differently (canvas, card size, a larger hub card) | `canvas`, `card` and per-card `w`, `h`, `scale` in that diagram's spec |
+| Size one diagram differently (canvas, card size) | `canvas` and `card` in that diagram's spec |
+| Make one card a different size from the rest | `w`, `h`, `scale` on that card in the spec |
 | Change the default shape sizes or detail-page layout | `GEOMETRY` at the top of `src/engine.js` |
 | Add an icon for one diagram | `icons:{...}` in that diagram's spec |
 | Add an icon for everyone | `src/icons.js`, then `bin/build.py --icons -o /tmp/icons.html && bin/export-png.sh /tmp/icons.html examples/icons.png ""` |

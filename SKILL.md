@@ -24,7 +24,8 @@ You write one small spec file describing the system. The kit turns it into an in
    `<kit>/docs/design.md`. Match that feel.
 3. **Plan the sizes.** The example's canvas, card and gap sizes fit that example; they are not rules.
    From your story, decide the card count and arrangement, then choose the canvas size and shape, the
-   card size, and the spacing that make *this* diagram look good (`docs/design.md`, "Sizing").
+   card size, and the spacing that make *this* diagram look good (`docs/design.md`, "Sizing"). Within
+   the diagram keep it consistent: one size for every card, one for every collapsed group.
 4. **Write the spec.** Copy `<kit>/starter/diagram.js` into the project (e.g. `docs/architecture.diagram.js`)
    and fill it in following `<kit>/docs/spec.md`. `<kit>/examples/web-app/diagram.js` is a full example.
    Icon names: `<kit>/examples/icons.png`. Need one that is missing? `<kit>/docs/icons.md`.
@@ -46,4 +47,5 @@ You write one small spec file describing the system. The kit turns it into an in
   `icons` field; a different accent colour is a theme (`--theme`). Change the kit only when the user
   asks to change the style for all future diagrams; `README.md` says which file to touch.
 - Keep to the design rules in `docs/design.md` unless the user asks otherwise. Sizes are not among
-  them: sizing is your call, per diagram, set in the spec.
+  them: sizing is your call, per diagram, set in the spec. Within one diagram all components of a kind
+  are the same size, unless the user asks for different sizes.
