@@ -20,10 +20,10 @@ You write one small spec file describing the system. The kit turns it into an in
 1. **Understand the system.** Read the project's README and entry points. Write the request flow as a
    numbered story ("user uploads a draft, the API calls the model, ..."). More than about 10 beats means
    too much detail for the overview: move it into a detail page.
-2. **Read the look.** Open `<kit>/examples/shorts-copilot/overview.png` and `detail.png`, then
+2. **Read the look.** Open `<kit>/examples/web-app/flow.png` and `detail.png`, then
    `<kit>/docs/design.md`. Match that feel.
 3. **Write the spec.** Copy `<kit>/starter/diagram.js` into the project (e.g. `docs/architecture.diagram.js`)
-   and fill it in following `<kit>/docs/spec.md`. `<kit>/examples/shorts-copilot/diagram.js` is a full example.
+   and fill it in following `<kit>/docs/spec.md`. `<kit>/examples/web-app/diagram.js` is a full example.
    Icon names: `<kit>/examples/icons.png`. Need one that is missing? `<kit>/docs/icons.md`.
 4. **Build.** `python3 <kit>/bin/build.py docs/architecture.diagram.js -o docs/architecture.html`
 5. **Look at it and fix it.** Export PNGs and read them: the finished flow, one mid-flow step, and every detail page.

@@ -3,7 +3,7 @@
 What the diagrams should look and feel like. Exact colour values are in `themes/default.css` and
 component styling in `src/diagram.css`; this guide explains the intent behind them.
 
-Reference images: `examples/shorts-copilot/overview.png` and `detail.png`.
+Reference images: `examples/web-app/flow.png` (mid-flow), `overview.png` (finished) and `detail.png`.
 
 ## The feel
 

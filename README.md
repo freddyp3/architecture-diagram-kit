@@ -3,7 +3,11 @@
 A small kit for making clean, interactive architecture diagrams. You describe a system in one spec
 file; the kit builds a single self-contained HTML page (no server, no dependencies) and can export PNGs.
 
-![Overview](examples/shorts-copilot/overview.png)
+![A diagram mid-flow: the accent line traces the request through the system](examples/web-app/flow.png)
+
+Sub-systems open their own page:
+
+![Detail page](examples/web-app/detail.png)
 
 It is also an agent skill: `SKILL.md` tells Claude, Devin or similar how to use the kit.
 
@@ -20,7 +24,7 @@ bin/export-png.sh ~/my-project/docs/architecture.diagram.html       # 4. optiona
 
 Open the HTML in a browser. Right arrow / Space steps forward, Left steps back, Esc leaves a detail page.
 
-To see it working first: `bin/build.py examples/shorts-copilot/diagram.js -o /tmp/demo.html && open /tmp/demo.html`
+To see it working first: `bin/build.py examples/web-app/diagram.js -o /tmp/demo.html && open /tmp/demo.html`
 
 ## How it is organised
 
@@ -41,7 +45,9 @@ Each file has one job. A diagram is `spec + theme + styles + icons + engine`, jo
 | `docs/spec.md` | Reference for the spec format | |
 | `docs/design.md` | The look: principles, layout rules, checklist | |
 | `docs/icons.md` | How to draw and add an icon | |
-| `examples/` | A full example spec and reference PNGs | |
+| `examples/web-app/` | Generic example spec and the reference PNGs | |
+| `examples/shorts-copilot/` | A real project's diagram, with three-row detail pages | |
+| `examples/icons.png` | Every icon with its name | |
 | `SKILL.md` | Workflow for AI agents | |
 
 ## Changing things
@@ -60,18 +66,22 @@ Each file has one job. A diagram is `spec + theme + styles + icons + engine`, jo
 After changing anything in `src/` or `themes/`, rebuild the example and look at it to check nothing broke:
 
 ```bash
-bin/build.py examples/shorts-copilot/diagram.js -o /tmp/demo.html
-bin/export-png.sh /tmp/demo.html /tmp/demo.png "step=7&u=0.5"
-bin/export-png.sh /tmp/demo.html /tmp/demo-detail.png "view=rp&dstep=end"
+bin/build.py examples/web-app/diagram.js -o /tmp/demo.html
+bin/export-png.sh /tmp/demo.html /tmp/demo.png "step=12&u=0.55"
+bin/export-png.sh /tmp/demo.html /tmp/demo-detail.png "view=jobs&dstep=end"
 ```
 
 ## Using it as an agent skill
 
-Link the folder into the tool's skills directory, for example:
+Link the folder into your tools' global skills directories, and the skill is available in every repo:
 
 ```bash
-ln -s "$(pwd)" ~/.claude/skills/architecture-diagram-creator
+ln -s "$(pwd)" ~/.claude/skills/architecture-diagram-creator    # Claude Code
+ln -s "$(pwd)" ~/.agents/skills/architecture-diagram-creator    # Devin, Codex and others
 ```
+
+Then ask for "an architecture diagram of this project" in any repo. The agent keeps the spec and the
+built HTML in that repo; the kit itself stays here and is never copied.
 
 ## Note on logos
 

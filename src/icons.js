@@ -32,6 +32,12 @@ const ICONS={
  file:'<path d="M-10-14H4l7 7v19a2 2 0 0 1-2 2H-10a2 2 0 0 1-2-2v-24a2 2 0 0 1 2-2z" fill="#94a3b8"/>'+st('#fff','M-6 0h12M-6 6h8',2),
  queue:'<rect x="-14" y="-12" width="28" height="6" rx="3" fill="#8b5cf6"/><rect x="-14" y="-3" width="28" height="6" rx="3" fill="#8b5cf6" opacity=".7"/><rect x="-14" y="6" width="28" height="6" rx="3" fill="#8b5cf6" opacity=".4"/>',
  video:'<rect x="-14" y="-10" width="28" height="20" rx="5" fill="#ef4444"/><path d="M-4-6v12l10-6z" fill="#fff"/>',
+ window:'<rect x="-14" y="-11" width="28" height="22" rx="4" fill="#8b5cf6"/><path d="M-14-4H14" stroke="#fff" stroke-width="2"/><circle cx="-9.5" cy="-7.5" r="1.4" fill="#fff"/><circle cx="-5.5" cy="-7.5" r="1.4" fill="#fff"/>',
+ bell:'<path d="M0-13a8 8 0 0 0-8 8v6l-3 5h22l-3-5v-6a8 8 0 0 0-8-8z" fill="#f43f5e"/><circle cy="10" r="3" fill="#f43f5e"/>',
+ mail:'<rect x="-14" y="-10" width="28" height="20" rx="4" fill="#ec4899"/>'+st('#fff','M-9-4l9 6 9-6',2.2),
+ card:'<rect x="-14" y="-10" width="28" height="20" rx="4" fill="#10b981"/><rect x="-14" y="-5" width="28" height="5" fill="#fff"/>'+st('#fff','M-9 5h6',2),
+ cloud:'<path d="M-7 10a7 7 0 0 1-1-13.9A9 9 0 0 1 9-2a6 6 0 0 1-1 12z" fill="#0ea5e9"/>',
+ gear:'<circle r="9" fill="none" stroke="#64748b" stroke-width="7" stroke-dasharray="4.71 4.71"/><circle r="8" fill="#64748b"/><circle r="3.2" fill="#fff"/>',
 };
 /* White glyphs for the accent circle on result pills. */
 const GLYPHS={
