@@ -1,5 +1,6 @@
 /* Component styles. Uses theme tokens only: no colour or font is named here.
-   Sizes and positions of shapes live in engine.js (GEOMETRY), because SVG needs them as attributes. */
+   Default sizes of shapes live in engine.js (GEOMETRY), because SVG needs them as attributes.
+   The card label size below must match GEOMETRY.labelPx. */
 *{box-sizing:border-box}
 html,body{margin:0;height:100%;overflow:hidden;background:var(--bg)}
 body{font-family:var(--font)}

@@ -1,6 +1,6 @@
 <!doctype html>
 <!-- {{BANNER}} -->
-<html lang="en"><head><meta charset="utf-8"><title>Architecture diagram</title>
+<html lang="en"><head><meta charset="utf-8"><meta name="diagram-canvas" content="{{CANVAS_W}}x{{CANVAS_H}}"><title>Architecture diagram</title>
 <style>
 {{STYLE}}
 </style></head><body>
@@ -8,7 +8,7 @@
 <filter id="sh" x="-20%" y="-40%" width="140%" height="200%"><feDropShadow dx="0" dy="5" stdDeviation="8" flood-opacity=".08"/><feDropShadow dx="0" dy="1" stdDeviation="1.2" flood-opacity=".05"/></filter>
 <filter id="shOn" x="-30%" y="-60%" width="160%" height="260%"><feDropShadow dx="0" dy="12" stdDeviation="14" flood-opacity=".22"/></filter>
 </defs></svg>
-<svg id="topS" class="layer" viewBox="0 0 1720 900" preserveAspectRatio="xMidYMid meet"><g id="top"></g></svg>
+<svg id="topS" class="layer" viewBox="0 0 {{CANVAS_W}} {{CANVAS_H}}" preserveAspectRatio="xMidYMid meet"><g id="top"></g></svg>
 <svg id="detS" class="layer hide" viewBox="0 0 1720 900" preserveAspectRatio="xMidYMid meet"><g id="detail"></g></svg>
 <script>
 {{SCRIPT}}

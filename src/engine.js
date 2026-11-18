@@ -1,8 +1,9 @@
 /* Engine: turns a diagram spec into the interactive page.
+   GEOMETRY holds the default sizes; a spec may override card size per diagram or per card (docs/spec.md).
    Knows nothing about any project, colour or icon: those arrive as arguments (spec, library) and CSS tokens.
    Entry point: mountDiagram(spec, {icons, glyphs}). Spec format: docs/spec.md. */
 const GEOMETRY={
- cardW:310, cardH:74, cardR:14, iconX:40, labelX:74,
+ cardW:310, cardH:74, cardR:14, iconX:40, labelX:74, labelPx:18,
  groupR:20, tile:54, tileR:13, tileGap:77,
  detail:{inputX:155, inputW:230, cardW:280, rowGap:150, midY:450, colsX:320, colsW:900, resultX:1260, resultW:420},
 };
@@ -14,10 +15,11 @@ function mountDiagram(spec,lib){
  const need=(map,id,what)=>{if(!(id in map))throw new Error(`Unknown ${what} "${id}". Available: ${Object.keys(map).join(', ')}`);return map[id]};
 
  /* --- shapes --- */
- function card(p,{label,icon,cx,y,w=G.cardW}){const x=cx-w/2,el=mk('g',{class:'node'},p);
-  mk('rect',{class:'card',x,y:y-G.cardH/2,width:w,height:G.cardH,rx:G.cardR},el);
-  if(icon)mk('g',{class:'ic',transform:`translate(${x+G.iconX} ${y})`},el).innerHTML=need(ICONS,icon,'icon');
-  mk('text',icon?{x:x+G.labelX,y:y+7}:{x:cx,y:y+7,'text-anchor':'middle'},el,label);return el}
+ function card(p,{label,icon,cx,y,w=G.cardW,h=G.cardH,scale:s=1}){const x=cx-w/2,el=mk('g',{class:'node'},p);
+  mk('rect',{class:'card',x,y:y-h/2,width:w,height:h,rx:Math.min(G.cardR*s,h/2)},el);
+  if(icon)mk('g',{class:'ic',transform:`translate(${x+G.iconX*s} ${y})`+(s===1?'':` scale(${s})`)},el).innerHTML=need(ICONS,icon,'icon');
+  const t=mk('text',icon?{x:x+G.labelX*s,y:y+7*s}:{x:cx,y:y+7*s,'text-anchor':'middle'},el,label);
+  if(s!==1)t.style.fontSize=G.labelPx*s+'px';return el}
  function group(p,g){const el=mk('g',{class:'group'},p);
   mk('rect',{x:g.x,y:g.y,width:g.w,height:g.h,rx:G.groupR},el);mk('text',{x:g.x+22,y:g.y+29},el,g.label);
   (g.tiles||[]).forEach((n,i)=>{const x=g.x+60+i*G.tileGap,y=g.y+82,h=G.tile/2;
@@ -78,7 +80,7 @@ function mountDiagram(spec,lib){
  for(const k in spec.groups||{}){E[k]=group(under,spec.groups[k]);
   if(spec.details&&spec.details[k]){E[k].classList.add('click');E[k].onclick=()=>open(k)}}
  const dotLayer=mk('g',{},topL);
- for(const k in spec.nodes){const n=spec.nodes[k];E[k]=card(topL,{...n,cx:n.x})}
+ for(const k in spec.nodes){const n=spec.nodes[k];E[k]=card(topL,{...spec.card,...n,cx:n.x})}
  M.els=Object.values(E);
  M.seq=(spec.steps||[]).map(s=>s.at?['h',s.at.map(id=>need(E,id,'node or group'))]
   :s.along?['m',s.along.map(id=>need(L,id,'edge')),s.dur||1]

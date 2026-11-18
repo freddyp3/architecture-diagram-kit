@@ -22,18 +22,22 @@ You write one small spec file describing the system. The kit turns it into an in
    too much detail for the overview: move it into a detail page.
 2. **Read the look.** Open `<kit>/examples/web-app/flow.png` and `detail.png`, then
    `<kit>/docs/design.md`. Match that feel.
-3. **Write the spec.** Copy `<kit>/starter/diagram.js` into the project (e.g. `docs/architecture.diagram.js`)
+3. **Plan the sizes.** The example's canvas, card and gap sizes fit that example; they are not rules.
+   From your story, decide the card count and arrangement, then choose the canvas size and shape, the
+   card size, and the spacing that make *this* diagram look good (`docs/design.md`, "Sizing").
+4. **Write the spec.** Copy `<kit>/starter/diagram.js` into the project (e.g. `docs/architecture.diagram.js`)
    and fill it in following `<kit>/docs/spec.md`. `<kit>/examples/web-app/diagram.js` is a full example.
    Icon names: `<kit>/examples/icons.png`. Need one that is missing? `<kit>/docs/icons.md`.
-4. **Build.** `python3 <kit>/bin/build.py docs/architecture.diagram.js -o docs/architecture.html`
-5. **Look at it and fix it.** Export PNGs and read them: the finished flow, one mid-flow step, and every detail page.
+5. **Build.** `python3 <kit>/bin/build.py docs/architecture.diagram.js -o docs/architecture.html`
+6. **Look at it and fix it.** Export PNGs and read them: the finished flow, one mid-flow step, and every detail page.
    ```
    <kit>/bin/export-png.sh docs/architecture.html /tmp/end.png "step=end"
    <kit>/bin/export-png.sh docs/architecture.html /tmp/mid.png "step=5"
    <kit>/bin/export-png.sh docs/architecture.html /tmp/detail.png "view=<groupId>&dstep=end"
    ```
-   Go through the checklist at the end of `docs/design.md`. Edit the spec, rebuild, repeat.
-6. **Deliver** the spec, the built HTML, and a `step=end` PNG if it is going in a README.
+   Go through the checklist at the end of `docs/design.md`. Judge the sizing by eye here: if the drawing
+   looks lost, cramped or lopsided, change `canvas`, card sizes or spacing. Edit the spec, rebuild, repeat.
+7. **Deliver** the spec, the built HTML, and a `step=end` PNG if it is going in a README.
 
 ## Rules
 
@@ -41,4 +45,5 @@ You write one small spec file describing the system. The kit turns it into an in
 - Do not change the kit (`src/`, `themes/`) to suit one diagram. Project-specific icons go in the spec's
   `icons` field; a different accent colour is a theme (`--theme`). Change the kit only when the user
   asks to change the style for all future diagrams; `README.md` says which file to touch.
-- Keep to the design rules in `docs/design.md` unless the user asks otherwise.
+- Keep to the design rules in `docs/design.md` unless the user asks otherwise. Sizes are not among
+  them: sizing is your call, per diagram, set in the spec.

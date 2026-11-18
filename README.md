@@ -37,7 +37,7 @@ Each file has one job. A diagram is `spec + theme + styles + icons + engine`, jo
 | `themes/indigo.css` | Example alternative theme (overrides the accent only) | token names |
 | `src/diagram.css` | How components look (cards, lines, groups, pills), using tokens only | token names |
 | `src/icons.js` | The icon library | nothing |
-| `src/engine.js` | Draws a spec and runs the step-through interaction; holds shape sizes (`GEOMETRY`) | spec format, CSS class names |
+| `src/engine.js` | Draws a spec and runs the step-through interaction; holds default shape sizes (`GEOMETRY`) | spec format, CSS class names |
 | `src/gallery.js` | The icon gallery page | icon library |
 | `src/shell.html` | Page skeleton the build fills in | nothing |
 | `bin/build.py` | Joins the pieces into one HTML file | file layout |
@@ -56,7 +56,8 @@ Each file has one job. A diagram is `spec + theme + styles + icons + engine`, jo
 | Use different colours for one diagram | Add `themes/<name>.css` overriding tokens, build with `--theme <name>` (or `--theme path/to.css`) |
 | Change the default colours or font everywhere | `themes/default.css` |
 | Change how a component looks (border weight, text size, shadow, hover lift) | `src/diagram.css` |
-| Change shape sizes or detail-page layout | `GEOMETRY` at the top of `src/engine.js` |
+| Size one diagram differently (canvas, card size, a larger hub card) | `canvas`, `card` and per-card `w`, `h`, `scale` in that diagram's spec |
+| Change the default shape sizes or detail-page layout | `GEOMETRY` at the top of `src/engine.js` |
 | Add an icon for one diagram | `icons:{...}` in that diagram's spec |
 | Add an icon for everyone | `src/icons.js`, then `bin/build.py --icons -o /tmp/icons.html && bin/export-png.sh /tmp/icons.html examples/icons.png ""` |
 | Change keyboard behaviour or animation | `src/engine.js` |

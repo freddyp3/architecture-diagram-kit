@@ -6,12 +6,27 @@ positions, and nothing about colours or styling.
 ```js
 const DIAGRAM={
  title:'Project name',
+ canvas:[1720,900], card:{w:310,h:74},   // optional sizing, defaults shown
  nodes:{...}, groups:{...}, edges:{...}, steps:[...], details:{...},
  icons:{...}, glyphs:{...},   // optional
 };
 ```
 
-The canvas is **1720 wide x 900 tall**. All positions are in those units, origin top-left.
+All positions and sizes are in canvas units, origin top-left. Every size on this page is a default:
+choose what looks right for the diagram (`docs/design.md`, "Sizing").
+
+## `canvas`, `card`: sizing
+
+```js
+canvas:[1300,700], card:{w:260}
+```
+
+| Field | Meaning |
+|---|---|
+| `canvas` | `[width, height]` of the overview, default `[1720,900]`. Write it as two whole numbers. The page scales it to fit the window, so a smaller canvas makes everything look larger, and the PNG export is twice this size |
+| `card` | defaults for every card in `nodes`: any of `w`, `h`, `scale` |
+
+Detail pages are laid out automatically on their own 1720 x 900 canvas, whatever `canvas` is.
 
 ## `title`
 
@@ -26,12 +41,14 @@ nodes:{ api:{label:'API', icon:'server', x:860, y:330} }
 | Field | Meaning |
 |---|---|
 | key (`api`) | id used by `steps` |
-| `label` | text on the card, 1-3 words, at most about 22 characters |
+| `label` | text on the card, 1-3 words |
 | `icon` | icon name (see `examples/icons.png`); omit for a centred text-only card |
 | `x`, `y` | **centre** of the card |
-| `w` | width, default 310. Height is always 74 |
+| `w`, `h` | width and height, default 310 x 74 (or the spec's `card`) |
+| `scale` | size of the icon and label inside the card, default 1. Raise it with `w` and `h` for a card that should stand out |
 
-A card's borders are at `x ± 155` and `y ± 37`.
+A card's borders are at `x ± w/2` and `y ± h/2`. A label needs a width of about
+`(94 + 10 per character) x scale` with an icon, so the default card holds about 22 characters.
 
 ## `groups`: tinted containers
 
@@ -41,10 +58,12 @@ groups:{ jobs:{label:'background jobs', x:675, y:510, w:350, h:130, tiles:['queu
 
 `x`, `y` is the **top-left** corner. Two uses:
 
-- **Container around cards.** Position the cards inside it yourself: 20 px side padding, first card
-  centre at `group.y + 77`, each next card 90 lower. A group of two cards is 350 x 224.
-- **Collapsed sub-system.** Give it `tiles` (up to 4 icon names; size 350 x 130) and an entry with the
-  same id in `details`. It then opens a detail page on click or via an `open` step.
+- **Container around cards.** Position the cards inside it yourself, leaving the top 40 for the
+  caption and equal padding on the other sides. With default cards: 20 side padding, first card centre
+  at `group.y + 77`, each next card 90 lower, so a group of two cards is 350 x 224.
+- **Collapsed sub-system.** Give it `tiles` (icon names) and an entry with the same id in `details`.
+  It then opens a detail page on click or via an `open` step. Tiles are a fixed size, laid out from
+  the left 77 apart: 130 high, and 350 wide for four tiles (77 less for each tile fewer).
 
 ## `edges`: connectors
 

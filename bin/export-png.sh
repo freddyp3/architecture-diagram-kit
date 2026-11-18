@@ -1,5 +1,5 @@
 #!/bin/bash
-# Render a built diagram to PNG (3440 x 1800) with headless Chrome.
+# Render a built diagram to PNG with headless Chrome, at twice the diagram's canvas size (3440 x 1800 by default).
 #   export-png.sh diagram.html [out.png] [query]
 # query: "step=end" (default: whole flow drawn) | "step=3" | "step=3&u=0.5" | "view=<groupId>&dstep=end"
 # Set CHROME=/path/to/chrome if it is not found automatically.
@@ -15,7 +15,8 @@ for c in "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" "/Applic
   if [ -x "$c" ] || command -v "$c" >/dev/null 2>&1; then chrome=$c; fi
 done
 [ -n "$chrome" ] || { echo "Chrome not found. Set CHROME=/path/to/chrome." >&2; exit 1; }
-"$chrome" --headless=new --disable-gpu --hide-scrollbars --window-size=1720,900 \
+size=$(sed -n 's/.*name="diagram-canvas" content="\([0-9]*\)x\([0-9]*\)".*/\1,\2/p' "$html" | head -1)
+"$chrome" --headless=new --disable-gpu --hide-scrollbars --window-size="${size:-1720,900}" \
   --force-device-scale-factor=2 --virtual-time-budget=3000 \
   --screenshot="$out" "file://$html?$query" 2>/dev/null
 echo "$out"
