@@ -9,7 +9,7 @@ Sub-systems open their own page:
 
 ![Detail page](examples/web-app/detail.png)
 
-It is also an agent skill: `SKILL.md` tells Claude, Devin or similar how to use the kit.
+It is also an agent skill.
 
 ## Quick start
 
